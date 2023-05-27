@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>INEMURI</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+  <link rel='stylesheet' href='index.css'>
+
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin="">
+    </script>
+  <link href="index.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+
+<body onload="ocultar_pop()">
+
+    <h1 id="inemuri">INEMURI</h1>
+    <div id="sample_map"></div>
+    
+    <script src="script.js">
+    </script>
+    
+    <div class="apagar-alarmas-container">
+        <button id="boton-detener-vibracion" class="apagar-alarmas-boton">APAGAR</button>
+    </div>
+
+    <div id="eliminar-alarmas" class="pop">
+        <h1>ALARMAS GUARDADAS:</h1>
+        <p>SELECCIONE UNA PARA ELIMINAR</p>
+        <div class="contenedor-flechas">
+          
+          
+        </div>        
+        <button class="botones-pop anular" onclick="quitarMenosAlarma(),deleteButtonAlarms('alarma_temporal'),deleteButtonAlarms('eliminar'), mostrarBotones()">CANCELAR</button>
+    </div>
+
+    <div id="activar-alarmas" class="pop">
+        <h1>ALARMAS GUARDADAS:</h1>
+        <p>En verde las activas, en rojo las desactivadas</p>
+        <div class="contenedor-flechas">
+          
+          
+        </div>   
+        <button class="botones-pop anular" onclick="quitarActivarAlarma(), deleteButtonAlarms('alarma_temporal'),deleteButtonAlarms('eliminar'),mostrarBotones()">CERRAR</button>
+    </div>
+    
+    <div id="contenedor-botones" class="contenedor">
+        <button class="botones-bajo-mapa" onclick="mostrarEntrada('Nombre de la nueva alarma','formulario')">+ ALARMA</button>
+        <button class="botones-bajo-mapa" onclick="mostrarMenosAlarma(), showAlarms('eliminar-alarmas',true), ocultarBotones()">- ALARMA</button>
+        <button class="botones-bajo-mapa" onclick="mostrarActivarAlarma(), showAlarms('activar-alarmas',false), ocultarBotones()">ACTIVAR ALARMA</button>
+    </div>
+    <div id="contenedor-botones2" class="contenedor">
+        <button class="botones-bajo-mapa" onclick="centrar()">CENTRAR</button>
+        <button class="botones-bajo-mapa" onclick="mostrarEntrada('','formulario2')">BUSCAR</button>
+    </div>
+
+    <div id="formulario">
+      <label for="entrada"></label>
+      <input type="text" id="entrada">
+      <button onclick="setAlarm()">Aceptar</button>
+      <button onclick="ocultarEntrada('formulario')">Cancelar</button>
+    </div>
+
+    <div id="formulario2">
+      <label for="entrada2">LATITUD</label>
+      <input type="text" id="entrada2">
+      <label for="entrada3">LONGITUD</label>
+      <input type="text" id="entrada3">
+      <button onclick="searchPlace()">Aceptar</button>
+      <button onclick="ocultarEntrada('formulario2')">Cancelar</button>
+    </div>
+    
+    <div id="notificacion-error">
+
+      <button id="boton-error"onclick="ocultarError()">ACEPTAR</button>
+    </div>
+    
+</body>
+
+</html>
